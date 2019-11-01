@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blog.mapper.BlogsMapper">
+    <insert id="add" >
+        insert into blogs(blogid,userid,title,blog_content,createtime,updatetime)
+        values (#{blogid},#{userid},#{title},#{blog_content},#{createtime},#{updatetime})
+    </insert>
+
+    <select id="findAll" resultType="com.blog.pojo.Blogs" parameterType="java.lang.String">
+        select blogid,userid,title,blog_content,createtime,updatetime from blogs
+    </select>
+
+    <select id="findOneById" resultType="com.blog.pojo.Blogs" parameterType="java.lang.String">
+        select blogid,userid,title,blog_content,createtime,updatetime from blogs where blogid = #{blogid}
+    </select>
+
+    <update id="blogUpdate" >
+        update blogs set title=#{title},blog_content=#{blog_content},updatetime=#{updatetime} where blogid=#{blogid}
+    </update>
+
+    <delete id="blogDelete">
+        delete from blogs where blogid=#{blogid}
+    </delete>
+
+    <insert id="blogCommentAdd" >
+        insert into blog_users(commentid,userid,blogid,commentContent,createtime) values (#{commentid},#{userid},#{blogid},#{commentContent},#{createtime})
+    </insert>
+
+    <select id="findAllComment" resultType="com.blog.pojo.Comments" parameterType="java.lang.String">
+        select commentid,userid,blogid,commentContent,createtime from blog_users where blogid = #{blogid}
+    </select>
+
+    <delete id="blogCommentDelete">
+        delete from blog_users where commentid=#{commentid}
+    </delete>
+
+    <select id="blogSearch" resultType="com.blog.pojo.Blogs" parameterType="java.lang.String">
+        select blogid,userid,title,blog_content,createtime from blogs where title like "%"#{search}"%" or blog_content like "%"#{search}"%"
+    </select>
+
+    <select id="blogSearch2" resultType="com.blog.pojo.Blogs" parameterType="java.lang.String">
+        select blogid,userid,title,blog_content,createtime from blogs where title like #{search} or blog_content like #{search}
+    </select>
+
+
+</mapper>

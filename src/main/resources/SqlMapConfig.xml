@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE configuration
+                PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!-- 这个配置文件不太需要配置什么，分页插件就需要配置 -->
+
+<!-- 分页插件就需要配置 -->
+
+</configuration>
